@@ -8,8 +8,11 @@ PFont font2 = createFont("arial",14);
 String username;
 String password;
 
-ZipCarPinScreen pinScreen;
-ZipCarLoginScreen zipCarLoginScreen;
+AppScreenFactory factory = new AppScreenFactory();
+ZipCarPinScreen pinScreen = factory.makeAppScreen("pinscreen");
+//ZipCarPinScreen pinScreen;
+ZipCarLoginScreen zipCarLoginScreen = factory.makeAppScreen("login");
+//ZipCarLoginScreen zipCarLoginScreen;
 ZipCarTouchAdapter newAdapter;
 private Pin pin;
 
