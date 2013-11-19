@@ -11,8 +11,8 @@ String password;
 AppScreenFactory factory;
 ZipCarAppScreen newZipCarAppScreen = null;
 //ZipCarPinScreen pinScreen = factory.makeAppScreen("pinscreen");
-ZipCarPinScreen pinScreen;
-ZipCarLoginScreen zipCarLoginScreen;
+ZipCarAppScreen pinScreen;
+ZipCarAppScreen zipCarLoginScreen;
 //ZipCarLoginScreen zipCarLoginScreen;
 ZipCarTouchAdapter newAdapter;
 private Pin pin;
@@ -43,13 +43,15 @@ void setup() {
  cp5 = new ControlP5(this);
  //fill(126);
  //background(102);
- 
- pinScreen = new ZipCarPinScreen();
- pin = Pin.getInstance();
  factory = new AppScreenFactory();
- newZipCarAppScreen = factory.makeAppScreen("login");
+ pinScreen = factory.makeAppScreen("pinscreen");
+ //pinScreen = new ZipCarPinScreen();
+ pin = Pin.getInstance();
+ 
+ 
+ zipCarLoginScreen = factory.makeAppScreen("login");
  //zipCarLoginScreen = new ZipCarLoginScreen();
- newAdapter = new ZipCarLoginScreenAdapter(zipCarLoginScreen);
+ newAdapter = new ZipCarLoginScreenAdapter((ZipCarLoginScreen)zipCarLoginScreen);
  
  pinScreen.setImage("keypad.png");
  
