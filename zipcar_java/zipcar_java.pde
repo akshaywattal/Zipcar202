@@ -10,6 +10,13 @@ String password;
 
 AppScreenFactory factory;
 ZipCarAppScreen newZipCarAppScreen = null;
+ZipCarMenuCommand slot1;
+ZipCarMenuCommand slot2;
+ZipCarMenuCommand slot3;
+ZipCarDriveScreen zipCarDriveScreen;
+ZipCarMyZipcarScreen zipCarMyZipcarScreen;
+ZipCarReserveScreen zipCarReserveScreen; 
+
 //ZipCarPinScreen pinScreen = factory.makeAppScreen("pinscreen");
 ZipCarAppScreen pinScreen;
 ZipCarAppScreen zipCarLoginScreen;
@@ -52,6 +59,15 @@ void setup() {
  zipCarLoginScreen = factory.makeAppScreen("login");
  //zipCarLoginScreen = new ZipCarLoginScreen();
  newAdapter = new ZipCarLoginScreenAdapter((ZipCarLoginScreen)zipCarLoginScreen);
+ 
+ zipCarReserveScreen = new ZipCarReserveScreen();
+ zipCarDriveScreen = new ZipCarDriveScreen();
+ zipCarMyZipcarScreen = new ZipCarMyZipcarScreen();
+
+ 
+ slot1 = new ZipCarMenuCommand(zipCarReserveScreen);
+ slot2 = new ZipCarMenuCommand(zipCarDriveScreen);
+ slot3 = new ZipCarMenuCommand(zipCarMyZipcarScreen);
  
  pinScreen.setImage("keypad.png");
  
