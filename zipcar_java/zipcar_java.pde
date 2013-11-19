@@ -8,10 +8,11 @@ PFont font2 = createFont("arial",14);
 String username;
 String password;
 
-AppScreenFactory factory = new AppScreenFactory();
-ZipCarPinScreen pinScreen = factory.makeAppScreen("pinscreen");
-//ZipCarPinScreen pinScreen;
-ZipCarLoginScreen zipCarLoginScreen = factory.makeAppScreen("login");
+AppScreenFactory factory;
+ZipCarAppScreen newZipCarAppScreen = null;
+//ZipCarPinScreen pinScreen = factory.makeAppScreen("pinscreen");
+ZipCarPinScreen pinScreen;
+ZipCarLoginScreen zipCarLoginScreen;
 //ZipCarLoginScreen zipCarLoginScreen;
 ZipCarTouchAdapter newAdapter;
 private Pin pin;
@@ -45,7 +46,9 @@ void setup() {
  
  pinScreen = new ZipCarPinScreen();
  pin = Pin.getInstance();
- zipCarLoginScreen = new ZipCarLoginScreen();
+ factory = new AppScreenFactory();
+ newZipCarAppScreen = factory.makeAppScreen("login");
+ //zipCarLoginScreen = new ZipCarLoginScreen();
  newAdapter = new ZipCarLoginScreenAdapter(zipCarLoginScreen);
  
  pinScreen.setImage("keypad.png");

@@ -1,7 +1,8 @@
 public class AppScreenFactory {
-
+  
 public ZipCarAppScreen makeAppScreen(String screenName){
-
+        ZipCarAppScreen newZipCarAppScreen = null;
+        
        if(screenName.equals("login")){
         return new ZipCarLoginScreen();
        } 
