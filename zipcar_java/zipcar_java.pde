@@ -17,14 +17,18 @@ PFont font2 = createFont("arial",14);
 String username;
 String password;
 
-
 //Declaring objects for Factory pattern 
 AppScreenFactory factory;
 ZipCarAppScreen newZipCarAppScreen = null;
 ZipCarAppScreen pinScreen;
 ZipCarAppScreen zipCarHomeScreen;
 ZipCarAppScreen zipCarLoginScreen;
+ZipCarAppScreen zipCarSignUpScreen;
+ZipCarAppScreen zipCarNewMemberLoginScreen;
 ZipCarAppScreen zipCarReserveScreen;
+ZipCarAppScreen zipCarFindCarScreen;
+ZipCarAppScreen zipCarConfirmCarScreen;
+ZipCarAppScreen zipCarReserveNotifScreen;
 ZipCarAppScreen zipCarDriveScreen;
 ZipCarAppScreen zipCarMyZipcarScreen;
 
@@ -33,21 +37,14 @@ ZipCarMenuCommand slot1;
 ZipCarMenuCommand slot2;
 ZipCarMenuCommand slot3;
 
+//Declaring object for Adapter pattern
 ZipCarDisplayAdapter newAdapter;
+
+//Declaring object for Singleton pattern
 private Pin pin;
 
-PImage imgHome;
-PImage imgCarMenu;
-PImage imgLogin;
-PImage imgRemote;
-PImage imgReserve;
 PImage imgDatePicker;
-PImage imgLoading;
-PImage imgFindCar;
-PImage imgConfirmCar;
-PImage imgReserveNotification;
-PImage imgNewMember;
-PImage imgNewLogin;
+
 private static int mainScreenFlag=0;
 private static int touchScreenFlag=0;
 private static int loginScreenFlag=0;
@@ -65,9 +62,14 @@ void setup() {
  pinScreen = factory.makeAppScreen("pinscreen");
  zipCarHomeScreen = factory.makeAppScreen("home");
  zipCarLoginScreen = factory.makeAppScreen("login");
+ zipCarSignUpScreen = factory.makeAppScreen("newmember");
+ zipCarNewMemberLoginScreen = factory.makeAppScreen("newlogin");
  zipCarReserveScreen = factory.makeAppScreen("reserve");
  zipCarDriveScreen = factory.makeAppScreen("drive");
  zipCarMyZipcarScreen = factory.makeAppScreen("myzipcar");
+ zipCarFindCarScreen = factory.makeAppScreen("cars");
+ zipCarConfirmCarScreen = factory.makeAppScreen("reserveconfirm"); 
+ zipCarReserveNotifScreen = factory.makeAppScreen("reservenotification");
 
  slot1 = new ZipCarMenuCommand(zipCarReserveScreen);
  slot2 = new ZipCarMenuCommand(zipCarDriveScreen);
@@ -85,19 +87,13 @@ void setup() {
  pinScreen.setImage("keypad.png");
  zipCarHomeScreen.setImage("home.png");
  zipCarLoginScreen.setImage("login.png");
- 
- //Fate to be decided
- //zipCarReserveScreen.setImage("reserve.png");
- //zipCarDriveScreen.setImage("drive.png");
- //zipCarMyZipcarScreen.setImage("myzipcar.png");
+ zipCarSignUpScreen.setImage("newmember.png");
+ zipCarNewMemberLoginScreen.setImage("newlogin.png");
+ zipCarFindCarScreen.setImage("cars.png");
+ zipCarConfirmCarScreen.setImage("reserveconfirm.png");
+ zipCarReserveNotifScreen.setImage("reservenotification.png");
  
  imgDatePicker = loadImage("datepicker.png");
- imgFindCar =  loadImage("cars.png");
- imgLoading = loadImage("loading.png");
- imgConfirmCar= loadImage("reserveconfirm.png");
- imgReserveNotification = loadImage("reservenotification.png");
- imgNewMember = loadImage("newmember.png");
- imgNewLogin = loadImage("newlogin.png");
 }
 
 void draw() {
@@ -134,7 +130,7 @@ void mouseClicked() {
       reserveScreenFlag=3;//for new member registration
       cp5.remove("username");
       cp5.remove("password");
-      image(imgNewMember,0,0,300,550);
+      zipCarSignUpScreen.displayImage("newmember.png", 300, 550);
       cp5.addTextfield("myemail").setPosition(120,106).setSize(150,20)
       .setFont(font).setColor(color(0,0,0)).setColorBackground(color(245,245,245));
       cp5.addTextfield("mynewpassword").setPosition(120,150).setSize(150,20)
@@ -146,7 +142,7 @@ void mouseClicked() {
     
     else if(reserveScreenFlag==4 && (mouseX>17 && mouseX <280 && mouseY >300 && mouseY<330))
     {
-      image(imgNewLogin,0,0,300,550);
+      zipCarNewMemberLoginScreen.displayImage("newlogin.png", 300, 550);
       cp5.remove("myemail");
       cp5.remove("mynewpassword");
       cp5.remove("myphone");  
@@ -207,7 +203,7 @@ void mouseClicked() {
       cp5.remove("ends");
       cp5.remove("location");
       cp5.remove("cars");
-      image(imgFindCar,0,0,300,550);
+      zipCarFindCarScreen.displayImage("cars.png", 300, 550);
       findCarFlag=1;
     }
     
@@ -218,12 +214,12 @@ void mouseClicked() {
     }
     
     else if (reserveScreenFlag==1 && findCarFlag==1 && inDatePicker==1 && (mouseX>10 && mouseX <300 && mouseY >105 && mouseY<170)){
-      image(imgConfirmCar,0,0,300,550);
+      zipCarConfirmCarScreen.displayImage("reserveconfirm.png", 300, 550);
       carDetailsFlag=1;
     }
     
     else if (reserveScreenFlag==1 && findCarFlag==1 && inDatePicker==1 && carDetailsFlag==1 && (mouseX>20 && mouseX <280 && mouseY >240 && mouseY<270)){
-      image(imgReserveNotification,0,0,300,550);
+      zipCarReserveNotifScreen.displayImage("reservenotification.png", 300, 550);
       //getReserveScreen();
       inDatePicker=0;
       findCarFlag=0; 
