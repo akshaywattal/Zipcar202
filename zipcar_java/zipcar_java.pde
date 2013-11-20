@@ -77,8 +77,6 @@ void setup() {
  //zipCarDriveScreen.setImage("drive.png");
  //zipCarMyZipcarScreen.setImage("myzipcar.png");
  
- imgLogin   = loadImage("login.png");
- imgReserve = loadImage("reserve.png");
  imgDatePicker = loadImage("datepicker.png");
  imgFindCar =  loadImage("cars.png");
  imgLoading = loadImage("loading.png");
@@ -103,15 +101,10 @@ void mouseClicked() {
        mainScreenFlag=1;
      }   
    }
-   else if (mainScreenFlag==1 && loginScreenFlag==0 && (mouseX>17 && mouseX <75 && mouseY >25 && mouseY<90)) {
+   
+    else if (mainScreenFlag==1 && loginScreenFlag==0 && (mouseX>17 && mouseX <75 && mouseY >25 && mouseY<90)) {
       newAdapter.displayImage("login.png", 300, 550);
       loginScreenFlag=1;
-      //cp5.addTextfield("username").setPosition(100,148).setSize(180,20)
-      //.setFont(font).setColor(color(0,0,0)).setColorBackground(color(245,245,245));
-      //cp5.addTextfield("password").setPosition(100,195).setSize(180,20)
-      //.setFont(font).setColor(color(0,0,0)).setColorBackground(color(245,245,245));
-      //Hardcoded adapter
-      //newAdapter.touch(2,3);
     }
     
     else if (loginScreenFlag==1 && reserveScreenFlag==0 && (mouseX>17 && mouseX <250 && mouseY >250 && mouseY<280)
@@ -122,11 +115,12 @@ void mouseClicked() {
       cp5.remove("password");
       getReserveScreen();
     }
+    
     else if (loginScreenFlag==1 && reserveScreenFlag==0 && (mouseX>17 && mouseX <280 && mouseY >295 && mouseY<325)) {
       reserveScreenFlag=3;//for new member registration
       cp5.remove("username");
       cp5.remove("password");
-     image(imgNewMember,0,0,300,550);
+      image(imgNewMember,0,0,300,550);
       cp5.addTextfield("myemail").setPosition(120,106).setSize(150,20)
       .setFont(font).setColor(color(0,0,0)).setColorBackground(color(245,245,245));
       cp5.addTextfield("mynewpassword").setPosition(120,150).setSize(150,20)
@@ -185,10 +179,10 @@ void mouseClicked() {
     }
     
     else if (inDatePicker==1 && reserveScreenFlag==1 && (mouseX>248 && mouseX <280 && mouseY >320 && mouseY<340)){
-      image(imgReserve,0,0,300,550);
       getReserveScreen();
       inDatePicker=0;
     }
+    
     else if (reserveScreenFlag==1 && findCarFlag==0 && inDatePicker==0 && (mouseX>20 && mouseX <280 && mouseY >310 && mouseY<370)){
       //image(imgLoading,0,0,300,550);
       inDatePicker=1;
@@ -205,10 +199,12 @@ void mouseClicked() {
       inDatePicker=0;
       findCarFlag=0;
     }
+    
     else if (reserveScreenFlag==1 && findCarFlag==1 && inDatePicker==1 && (mouseX>10 && mouseX <300 && mouseY >105 && mouseY<170)){
       image(imgConfirmCar,0,0,300,550);
       carDetailsFlag=1;
     }
+    
     else if (reserveScreenFlag==1 && findCarFlag==1 && inDatePicker==1 && carDetailsFlag==1 && (mouseX>20 && mouseX <280 && mouseY >240 && mouseY<270)){
       image(imgReserveNotification,0,0,300,550);
       //getReserveScreen();
