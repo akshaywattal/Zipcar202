@@ -1,7 +1,16 @@
+import ddf.minim.spi.*;
+import ddf.minim.signals.*;
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.ugens.*;
+import ddf.minim.effects.*;
+
   import controlP5.*;
   
 ControlP5 cp5;
-
+Minim minim;
+AudioPlayer song;
+AudioInput input;
 PFont font = createFont("arial",14);
 PFont font2 = createFont("arial",14);
 
@@ -67,6 +76,11 @@ void setup() {
  pin = Pin.getInstance();
 
  newAdapter = new ZipCarLoginScreenAdapter((ZipCarLoginScreen)zipCarLoginScreen); 
+ //for sound
+ minim = new Minim(this);
+ song = minim.loadFile("remote.mp3");
+ 
+ //input = minim.getLineIn();
  
  pinScreen.setImage("keypad.png");
  zipCarHomeScreen.setImage("home.png");
@@ -157,6 +171,9 @@ void mouseClicked() {
       cp5.remove("ends");
       cp5.remove("location");
       cp5.remove("cars");
+      if(mouseX>110 && mouseX <175 && mouseY >500 && mouseY<550){
+      song.play();
+      }
       findCarFlag=0;
       inDatePicker=0;
     }
