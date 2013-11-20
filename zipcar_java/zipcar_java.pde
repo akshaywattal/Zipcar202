@@ -180,7 +180,6 @@ void mouseClicked() {
     }
     
     else if (reserveScreenFlag==1 && findCarFlag==0 && inDatePicker==0 && (mouseX>20 && mouseX <280 && mouseY >310 && mouseY<370)){
-      //image(imgLoading,0,0,300,550);
       inDatePicker=1;
       cp5.remove("starts");
       cp5.remove("ends");
