@@ -24,7 +24,7 @@ ZipCarMenuCommand slot1;
 ZipCarMenuCommand slot2;
 ZipCarMenuCommand slot3;
 
-ZipCarTouchAdapter newAdapter;
+ZipCarDisplayAdapter newAdapter;
 private Pin pin;
 
 PImage imgHome;
@@ -52,7 +52,7 @@ void setup() {
  smooth();
  cp5 = new ControlP5(this);
 
- factory = new AppScreenFactory();
+ factory = new AppScreenFactory(cp5);
  pinScreen = factory.makeAppScreen("pinscreen");
  zipCarHomeScreen = factory.makeAppScreen("home");
  zipCarLoginScreen = factory.makeAppScreen("login");
@@ -104,14 +104,14 @@ void mouseClicked() {
      }   
    }
    else if (mainScreenFlag==1 && loginScreenFlag==0 && (mouseX>17 && mouseX <75 && mouseY >25 && mouseY<90)) {
-      zipCarLoginScreen.displayImage("login.png", 300, 550);
+      newAdapter.displayImage("login.png", 300, 550);
       loginScreenFlag=1;
-      cp5.addTextfield("username").setPosition(100,148).setSize(180,20)
-      .setFont(font).setColor(color(0,0,0)).setColorBackground(color(245,245,245));
-      cp5.addTextfield("password").setPosition(100,195).setSize(180,20)
-      .setFont(font).setColor(color(0,0,0)).setColorBackground(color(245,245,245));
+      //cp5.addTextfield("username").setPosition(100,148).setSize(180,20)
+      //.setFont(font).setColor(color(0,0,0)).setColorBackground(color(245,245,245));
+      //cp5.addTextfield("password").setPosition(100,195).setSize(180,20)
+      //.setFont(font).setColor(color(0,0,0)).setColorBackground(color(245,245,245));
       //Hardcoded adapter
-      newAdapter.touch(2,3);
+      //newAdapter.touch(2,3);
     }
     
     else if (loginScreenFlag==1 && reserveScreenFlag==0 && (mouseX>17 && mouseX <250 && mouseY >250 && mouseY<280)

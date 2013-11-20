@@ -1,11 +1,11 @@
-public class ZipCarLoginScreenAdapter extends ZipCarTouchAdapter{
+public class ZipCarLoginScreenAdapter extends ZipCarDisplayAdapter{
   private ZipCarLoginScreen zipCarLoginScreen; 
   
   public ZipCarLoginScreenAdapter(ZipCarLoginScreen newZipCarLoginScreen){
     this.zipCarLoginScreen = newZipCarLoginScreen;     
   }
   
-  public void touch(int x, int y){
-    this.zipCarLoginScreen.touch(x,y);
+  public void displayImage(String image, int x, int y){
+    this.zipCarLoginScreen.displayImage(image,x,y);
   }
 }
