@@ -1,15 +1,10 @@
   import controlP5.*;
 
 public class ZipCarLoginScreen extends ZipCarAppScreen{
-  String inputKey;
   ControlP5 cp5;
   
   public ZipCarLoginScreen(ControlP5 newcp5){
     this.cp5 = newcp5;
-  }
-  
-  public void setImage(String imgName){
-    image  = loadImage(imgName);
   }
   
   //Contains both Image and Text Box, using Adapter to call it.
