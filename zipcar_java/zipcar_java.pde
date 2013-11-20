@@ -153,7 +153,7 @@ void mouseClicked() {
     else if (loginScreenFlag==1 && reserveScreenFlag==1 && (mouseX>25 && mouseX <90 && mouseY >500 && mouseY<550)) {
       getReserveScreen();
       findCarFlag=0;
-      inDatePicker=1;
+      inDatePicker=0;
     }
     
     //Command Pattern Menu2
@@ -164,7 +164,7 @@ void mouseClicked() {
       cp5.remove("location");
       cp5.remove("cars");
       findCarFlag=0;
-      inDatePicker=1;
+      inDatePicker=0;
     }
     
     //Command Pattern Menu3
@@ -175,7 +175,7 @@ void mouseClicked() {
       cp5.remove("location");
       cp5.remove("cars");
       findCarFlag=0;
-      inDatePicker=1;
+      inDatePicker=0;
     }
         
     else if (loginScreenFlag==1 && reserveScreenFlag==1 && ((mouseX>265 && mouseX <280 && mouseY >125 && mouseY<158) || 
