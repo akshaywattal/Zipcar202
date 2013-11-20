@@ -19,8 +19,23 @@ public ZipCarAppScreen makeAppScreen(String screenName){
   else if(screenName.equals("login")){
     return new ZipCarLoginScreen(cp5);
   }
+  else if(screenName.equals("newmember")){
+    return new ZipCarSignUpScreen();
+  }
+  else if(screenName.equals("newlogin")){
+    return new ZipCarNewMemberLoginScreen();
+  }
   else if(screenName.equals("reserve")){
     return new ZipCarReserveScreen();
+  }
+  else if(screenName.equals("cars")){
+    return new ZipCarFindCarScreen();
+  }
+  else if(screenName.equals("reserveconfirm")){
+    return new ZipCarConfirmCarScreen();
+  }
+  else if(screenName.equals("reservenotification")){
+    return new ZipCarReserveNotifScreen();
   }
   else if(screenName.equals("drive")){
     return new ZipCarDriveScreen();
