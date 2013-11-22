@@ -28,6 +28,7 @@ ZipCarAppScreen zipCarConfirmCarScreen;
 ZipCarAppScreen zipCarReserveNotifScreen;
 ZipCarAppScreen zipCarDriveScreen;
 ZipCarAppScreen zipCarMyZipcarScreen;
+ZipCarAppScreen zipCarLogoutScreen;
 
 //Declaring objects for Command pattern
 ZipCarMenuCommand slot1;
@@ -50,6 +51,7 @@ private static int inDatePicker=0;
 private static int findCarFlag=0;
 private static int carDetailsFlag=0;
 private static int inRemote = 0;
+private static int myZipcar=0;
 
 void setup() {
  size(300,550);
@@ -68,6 +70,7 @@ void setup() {
  zipCarFindCarScreen = factory.makeAppScreen("cars");
  zipCarConfirmCarScreen = factory.makeAppScreen("reserveconfirm"); 
  zipCarReserveNotifScreen = factory.makeAppScreen("reservenotification");
+ zipCarLogoutScreen = factory.makeAppScreen("logout");
 
  slot1 = new ZipCarMenuCommand(zipCarReserveScreen);
  slot2 = new ZipCarMenuCommand(zipCarDriveScreen);
@@ -90,7 +93,7 @@ void setup() {
  zipCarFindCarScreen.setImage("cars.png");
  zipCarConfirmCarScreen.setImage("reserveconfirm.png");
  zipCarReserveNotifScreen.setImage("reservenotification.png");
- 
+ zipCarLogoutScreen.setImage("logout.png"); 
  imgDatePicker = loadImage("datepicker.png");
 }
 
@@ -156,6 +159,7 @@ void mouseClicked() {
       getReserveScreen();
       findCarFlag=0;
       inDatePicker=0;
+      myZipcar=0;
     }
     
     //Command Pattern Menu2
@@ -168,6 +172,7 @@ void mouseClicked() {
 
       findCarFlag=0;
       inDatePicker=0;
+      myZipcar=0;
       //inRemote = 1;
     }
     else if(mouseX>100 && mouseX <185 && mouseY >200 && mouseY<300 && loginScreenFlag==1 && reserveScreenFlag==1){
@@ -184,8 +189,31 @@ void mouseClicked() {
       cp5.remove("cars");
       findCarFlag=0;
       inDatePicker=0;
+      myZipcar=1;
     }
-        
+       else if(myZipcar==1 && (mouseX>25 && mouseX <260 && mouseY >100 && mouseY<250) ){
+         
+         zipCarLogoutScreen.displayImage("logout.png", 300, 550);
+         
+         myZipcar = 2; 
+       
+       } 
+       
+       else if(myZipcar==2 && (mouseX>25 && mouseX <260 && mouseY >100 && mouseY<250) ){
+       
+       pin.setAuthentication(true);
+      
+      mainScreenFlag=0;
+      touchScreenFlag=0;
+      loginScreenFlag=0;
+      reserveScreenFlag=0;
+      inDatePicker=0;
+      findCarFlag=0;
+      carDetailsFlag=0;
+      inRemote = 0;
+      myZipcar=0;
+
+       }
     else if (loginScreenFlag==1 && reserveScreenFlag==1 && ((mouseX>265 && mouseX <280 && mouseY >125 && mouseY<158) || 
     (mouseX>265 && mouseX <275 && mouseY >160 && mouseY<195)) && inDatePicker==0) {
       image(imgDatePicker,0,310,300,200);
