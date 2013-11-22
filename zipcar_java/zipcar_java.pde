@@ -52,6 +52,8 @@ private static int findCarFlag=0;
 private static int carDetailsFlag=0;
 private static int inRemote = 0;
 private static int myZipcar=0;
+private static int inLogout=0;
+
 
 void setup() {
  size(300,550);
@@ -160,6 +162,8 @@ void mouseClicked() {
       findCarFlag=0;
       inDatePicker=0;
       myZipcar=0;
+      inRemote = 0;
+      inLogout = 0;
     }
     
     //Command Pattern Menu2
@@ -173,11 +177,13 @@ void mouseClicked() {
       findCarFlag=0;
       inDatePicker=0;
       myZipcar=0;
-      //inRemote = 1;
+      inRemote = 1;
+      inLogout = 0;
     }
-    else if(mouseX>100 && mouseX <185 && mouseY >200 && mouseY<300 && loginScreenFlag==1 && reserveScreenFlag==1){
+    else if(mouseX>100 && mouseX <185 && mouseY >200 && mouseY<300 && loginScreenFlag==1 && reserveScreenFlag==1 && inRemote==1){
       //song.play();
       ring();
+      
       }
     
     //Command Pattern Menu3
@@ -190,16 +196,19 @@ void mouseClicked() {
       findCarFlag=0;
       inDatePicker=0;
       myZipcar=1;
+      inRemote = 0;
+      inLogout = 0;
+      
     }
-       else if(myZipcar==1 && (mouseX>25 && mouseX <260 && mouseY >100 && mouseY<250) ){
+       else if(myZipcar==1 && (mouseX>25 && mouseX <260 && mouseY >130 && mouseY<170) ){
          
          zipCarLogoutScreen.displayImage("logout.png", 300, 550);
          
-         myZipcar = 2; 
+         inLogout = 1; 
        
-       } 
        
-       else if(myZipcar==2 && (mouseX>25 && mouseX <260 && mouseY >100 && mouseY<250) ){
+       
+       if(inLogout==1 && (mouseX>25 && mouseX <260 && mouseY >100 && mouseY<250) ){
        
        pin.setAuthentication(true);
       
@@ -212,8 +221,9 @@ void mouseClicked() {
       carDetailsFlag=0;
       inRemote = 0;
       myZipcar=0;
+      inLogout = 0;
 
-       }
+       }}
     else if (loginScreenFlag==1 && reserveScreenFlag==1 && ((mouseX>265 && mouseX <280 && mouseY >125 && mouseY<158) || 
     (mouseX>265 && mouseX <275 && mouseY >160 && mouseY<195)) && inDatePicker==0) {
       image(imgDatePicker,0,310,300,200);
