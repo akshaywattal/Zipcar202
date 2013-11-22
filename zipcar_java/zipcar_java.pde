@@ -1,16 +1,13 @@
-import ddf.minim.spi.*;
-import ddf.minim.signals.*;
-import ddf.minim.*;
-import ddf.minim.analysis.*;
-import ddf.minim.ugens.*;
-import ddf.minim.effects.*;
 
-  import controlP5.*;
+import ddf.minim.*;
+
+
+import controlP5.*;
   
 ControlP5 cp5;
 Minim minim;
-AudioPlayer song;
-AudioInput input;
+AudioSnippet song;
+//AudioInput input;
 PFont font = createFont("arial",14);
 PFont font2 = createFont("arial",14);
 
@@ -52,6 +49,7 @@ private static int reserveScreenFlag=0;
 private static int inDatePicker=0;
 private static int findCarFlag=0;
 private static int carDetailsFlag=0;
+private static int inRemote = 0;
 
 void setup() {
  size(300,550);
@@ -80,8 +78,8 @@ void setup() {
  newAdapter = new ZipCarLoginScreenAdapter((ZipCarLoginScreen)zipCarLoginScreen); 
  //for sound
  minim = new Minim(this);
- song = minim.loadFile("remote.mp3");
- 
+ //song = minim.loadFile("remote.mp3");
+ song = minim.loadSnippet("remote.mp3");
  //input = minim.getLineIn();
  
  pinScreen.setImage("keypad.png");
@@ -167,12 +165,15 @@ void mouseClicked() {
       cp5.remove("ends");
       cp5.remove("location");
       cp5.remove("cars");
-      if(mouseX>110 && mouseX <175 && mouseY >500 && mouseY<550){
-      song.play();
-      }
+
       findCarFlag=0;
       inDatePicker=0;
+      //inRemote = 1;
     }
+    else if(mouseX>100 && mouseX <185 && mouseY >200 && mouseY<300 && loginScreenFlag==1 && reserveScreenFlag==1){
+      //song.play();
+      ring();
+      }
     
     //Command Pattern Menu3
     else if (loginScreenFlag==1 && reserveScreenFlag==1 && (mouseX>195 && mouseX <260 && mouseY >500 && mouseY<550)) {
@@ -243,3 +244,17 @@ public void getReserveScreen()
       .setColor(color(0,0,0)).setFont(font2).setColorBackground(color(255,255,255)).setText(" All");
 }
 
+void ring() {
+    if (!song.isPlaying()) {
+      // The ring() function plays the sound, as long as it is not already playing. 
+      // rewind() ensures the sound starts from the beginning.
+      song.rewind(); 
+      song.play();
+    }
+  }
+  
+  public void stop() {
+  // The doorbell object must close its sound.
+  song.close(); 
+  super.stop();
+}
