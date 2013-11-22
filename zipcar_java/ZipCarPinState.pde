@@ -1,8 +1,8 @@
 public abstract class ZipCarPinState
 {
-    void delete()  {} ;
-    void enterDigit(String inputKey)  {};
-    void validPin() {};
-    void invalidPin() {};
+    public abstract void delete();
+    public abstract void enterDigit(String inputKey);
+    public abstract void validPin();
+    public abstract void invalidPin();
 
 }

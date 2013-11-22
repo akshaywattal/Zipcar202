@@ -1,5 +1,5 @@
 public class ZipCarMenuCommand extends Command{
-  ZipCarAppScreen zipCarAppScreen;
+  private ZipCarAppScreen zipCarAppScreen;
   String imgName;
   int xloc;
   int yloc;

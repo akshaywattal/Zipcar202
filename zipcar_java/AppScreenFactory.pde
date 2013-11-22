@@ -1,7 +1,7 @@
   import controlP5.*;
   
 public class AppScreenFactory {
-  ControlP5 cp5;
+  private ControlP5 cp5;
   
   public AppScreenFactory(ControlP5 newcp5){
     this.cp5 = newcp5;

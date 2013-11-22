@@ -1,18 +1,18 @@
 public class FourPinDigits extends ZipCarPinState{
   
-  ZipCarPinStateMachine pinStateMachine;
+  private ZipCarPinStateMachine pinStateMachine;
   
   public FourPinDigits(ZipCarPinStateMachine newPinStateMachine){
     pinStateMachine = newPinStateMachine;
   }
   
-  void delete()  {}
+  public void delete()  {}
   
-  void enterDigit(String inputKey) {}
+  public void enterDigit(String inputKey) {}
   
-  void validPin() {}
+  public void validPin() {}
   
-  void invalidPin(){
+  public void invalidPin(){
     pinStateMachine.setPinState(pinStateMachine.NoPinDigitState());
   }
 
