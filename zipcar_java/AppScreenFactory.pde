@@ -43,6 +43,9 @@ public ZipCarAppScreen makeAppScreen(String screenName){
   else if(screenName.equals("myzipcar")){
     return new ZipCarMyZipcarScreen();
   }  
+  else if(screenName.equals("logout")){
+  return new ZipCarLogoutScreen();
+  }
   else
     return null;
   }
