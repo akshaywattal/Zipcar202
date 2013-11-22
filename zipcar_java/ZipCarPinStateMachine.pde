@@ -1,9 +1,9 @@
 public class ZipCarPinStateMachine{
-  PImage imgDigit1;
-  PImage imgDigit2;
-  PImage imgDigit3;
-  PImage imgDigit4;
-  PImage imgKeypad;
+  private PImage imgDigit1;
+  private PImage imgDigit2;
+  private PImage imgDigit3;
+  private PImage imgDigit4;
+  private PImage imgKeypad;
   
   public boolean authenticated=false;
   private String I1, I2, I3, I4;
@@ -11,14 +11,14 @@ public class ZipCarPinStateMachine{
   private Pin pin;
   
   //Current State 
-  ZipCarPinState pinState;
+  private ZipCarPinState pinState;
   
   //Different Pin States
-  NoPinDigits digit0;
-  OnePinDigit digit1;
-  TwoPinDigits digit2;
-  ThreePinDigits digit3;
-  FourPinDigits digit4;
+  private NoPinDigits digit0;
+  private OnePinDigit digit1;
+  private TwoPinDigits digit2;
+  private ThreePinDigits digit3;
+  private FourPinDigits digit4;
     
   public ZipCarPinStateMachine(){
     digit0 = new NoPinDigits(this);
@@ -34,23 +34,23 @@ public class ZipCarPinStateMachine{
     imgDigit3 = loadImage("digit3.png");
   }
   
-  void setPinState(ZipCarPinState newPinState){
+  public void setPinState(ZipCarPinState newPinState){
     pinState = newPinState;
   } 
   
-  void delete(){
+  public void delete(){
     pinState.delete();
   }
   
-  void enterDigit(String inputKey){
+  public void enterDigit(String inputKey){
     pinState.enterDigit(inputKey);
   }
   
-  void validPin() {
+  public void validPin() {
     pinState.validPin();
   }
   
-  void invalidPin() {
+  public void invalidPin() {
     pinState.invalidPin();    
   }
   
