@@ -1,8 +1,8 @@
 public class ZipCarPinScreen extends ZipCarAppScreen{
   private String inputKey;
   
-  PassCodeKeyPad psKeyPad;
-  ZipCarPinStateMachine zipCarPinStateMachine;
+  private PassCodeKeyPad psKeyPad;
+  private ZipCarPinStateMachine zipCarPinStateMachine;
   
   public ZipCarPinScreen(){
     psKeyPad = new PassCodeKeyPad();
