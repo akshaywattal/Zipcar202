@@ -298,7 +298,7 @@ public void getReserveScreen()
       .setColor(color(0,0,0)).setFont(font2).setColorBackground(color(255,255,255)).setText(" All");
 }
 
-void ring() {
+  public void ring() {
     if (!song.isPlaying()) {
       // The ring() function plays the sound, as long as it is not already playing. 
       // rewind() ensures the sound starts from the beginning.
