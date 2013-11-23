@@ -1,3 +1,4 @@
+//Implementing Singleton Pattern on Pin
 public static class Pin {
 
     private boolean authenticated = false ;
@@ -14,7 +15,8 @@ public static class Pin {
         }
         return instance;
     }
-
+    
+    //Returns true if PIN is correct
     public boolean getAuthentication(){
         return this.authenticated ;
     }

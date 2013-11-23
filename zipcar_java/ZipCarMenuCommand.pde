@@ -1,3 +1,4 @@
+//Implementing interface Command
 public class ZipCarMenuCommand extends Command{
   private ZipCarAppScreen zipCarAppScreen;
   String imgName;

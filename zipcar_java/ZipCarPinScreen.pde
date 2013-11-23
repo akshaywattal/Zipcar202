@@ -1,3 +1,4 @@
+//Screen Class
 public class ZipCarPinScreen extends ZipCarAppScreen{
   private String inputKey;
   
@@ -13,7 +14,8 @@ public class ZipCarPinScreen extends ZipCarAppScreen{
     image(image, 0, 0, xloc, yloc);
   }
   
-    public void touch(int x, int y){
+  //Takes input form the PIN Screen
+  public void touch(int x, int y){
     inputKey=psKeyPad.keyPress(x,y);
     if (inputKey.equals(""));
       //Do Nothing

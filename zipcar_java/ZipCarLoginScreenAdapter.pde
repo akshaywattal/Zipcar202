@@ -1,3 +1,4 @@
+//Implementing interface Adapter
 public class ZipCarLoginScreenAdapter extends ZipCarDisplayAdapter{
   private ZipCarLoginScreen zipCarLoginScreen; 
   

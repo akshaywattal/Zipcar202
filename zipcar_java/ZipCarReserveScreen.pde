@@ -1,3 +1,4 @@
+//Screen Class
 public class ZipCarReserveScreen extends ZipCarAppScreen{
 
   public void displayImage(String imgName, int xloc, int yloc){
